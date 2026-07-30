@@ -1,0 +1,21 @@
+
+name: Create golang vendor dist
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  golang-dist:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Create golang dist
+        uses: fshp/golang-dist-action@workdir
+        with:
+          dist-filename: pocket-id-2.12.0
+          workdir: backend
+          exclude-directories: 
+          vendor-dir: pocket-id-2.12.0
+
